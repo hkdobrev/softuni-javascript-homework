@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cirle Area</title>
+</head>
+<body>
+	<p>
+		<strong>r=7;</strong>
+		area =
+		<output data-radius="7"></output>
+	</p>
+	<p>
+		<strong>r=1.5;</strong>
+		area =
+		<output data-radius="1.5"></output>
+	</p>
+	<p>
+		<strong>r=20;</strong>
+		area =
+		<output data-radius="20"></output>
+	</p>
+	<script src="circle-area.js"></script>
+	<script>
+		(function(window, document) {
+			[].forEach.call(
+				document.querySelectorAll('[data-radius]'),
+				function(circle) {
+					var radius = circle.dataset.radius,
+						circleArea = window.calcCircleArea(radius);
+
+					circle.innerHTML = circleArea;
+				}
+			);
+		}(window, window.document));
+	</script>
+</body>
+</html>
