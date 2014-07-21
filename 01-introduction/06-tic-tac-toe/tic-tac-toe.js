@@ -38,7 +38,7 @@
 		}
 	}
 
-	function colorRow (col) {
+	function colorCol (col) {
 		for (var i = 0; i < N; i++) {
 			colorCell(i, col);
 		}
@@ -76,7 +76,7 @@
 			}
 
 			if (i === N - 1) {
-				colorCol(row);
+				colorCol(col);
 				return true;
 			}
 		}
