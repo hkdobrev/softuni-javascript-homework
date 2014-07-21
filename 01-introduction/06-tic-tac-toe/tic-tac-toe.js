@@ -126,10 +126,14 @@
 
 	function announceResult (isDraw) {
 		var resultOutput = document.querySelectorAll('.js-winner')[0],
-			resultText = isDraw ? 'Draw' : 'Winner is ' + currentPlayer;
+			resultText = isDraw ? 'Draw' : 'Winner is ' + currentPlayer,
+			fieldElement = document.querySelectorAll('.js-field')[0];
 
 		resultOutput.innerHTML += resultText;
-		resultOutput.classList.remove('hidden')
+		resultOutput.classList.remove('hidden');
+
+		fieldElement.removeEventListener( 'click', handleClick, true );
+		fieldElement.classList.remove('table-hover');
 	}
 
 	function playerPlay (cell) {
@@ -150,13 +154,15 @@
 		}
 	}
 
+	function handleClick ( event ) {
+		if ( event.target.tagName.toLowerCase() === 'td' ) {
+			playerClicked( event.target );
+		}
+	}
+
 	document.querySelectorAll('.js-field')[0].addEventListener(
 		'click',
-		function( event ) {
-			if ( event.target.tagName.toLowerCase() === 'td' ) {
-				playerClicked( event.target );
-			}
-		},
+		handleClick,
 		true
 	);
 }(window, window.document));
